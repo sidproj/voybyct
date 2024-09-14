@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>VOYBYCT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="carousel">
+        <div class="item left active">
+            <img class="img" src="./public/image1.png" />
+            <div class="text" id="text">AN ANTIDOTE <span class="transparantText">TO BRAND</span></div>
+        </div>
+        <div class="item right">
+            <img class="img" src="./public/image2.png" />
+            <img class="place-middle" id="logo" src="./public/logo.png" />
+            <div class="footer place-bottom">
+                <div>instagram/@voybyct</div>
+                <div>|</div>
+                <div>behance.net/voybyct studio</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    const text = document.getElementById("text");
+    window.onload = function () {
+        let slides =
+            document.getElementsByClassName('item');
+
+        function addActive(slide) {
+            slide.classList.add('active');
+        }
+
+        function removeActive(slide) {
+            slide.classList.remove('active');
+        }
+
+
+        text.onmouseover = () => {
+
+            removeActive(slides[0]);
+            addActive(slides[1]);
+
+        }
+
+        window.onblur = window.onmouseout = function (e) {
+            e = e ? e : window.event;
+            var from = e.relatedTarget || e.toElement;
+            if (!from || from.nodeName == "HTML") {
+                if (slides[1].classList.contains('active')) {
+                    addActive(slides[0]);
+                    removeActive(slides[1]);
+
+                };
+            }
+        };
+
+    };
+</script>
+
+</html>
